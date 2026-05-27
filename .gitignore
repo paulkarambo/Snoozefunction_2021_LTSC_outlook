@@ -8,3 +8,4 @@ lib-amd/
 
 *.vsix
 *.log
+installer/*.exe

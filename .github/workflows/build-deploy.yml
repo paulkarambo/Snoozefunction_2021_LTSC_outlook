@@ -67,5 +67,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: OutlookSnooze-Setup
-          path: installer/Output/OutlookSnooze-Setup-*.exe
+          path: installer/OutlookSnooze-Setup-*.exe
           retention-days: 90
