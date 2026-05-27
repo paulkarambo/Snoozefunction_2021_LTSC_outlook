@@ -1,0 +1,94 @@
+<!-- Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT License. -->
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+    <!-- Office JavaScript API -->
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+
+    <!-- For more information on Fluent UI, visit https://developer.microsoft.com/fluentui#/. -->
+    <link rel="stylesheet" href="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-core/11.1.0/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="taskpane.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m">
+  <div class="ms-Fabric" id="snooze-app">
+    <header class="ms-bgColor-neutralLighter ms-padding">
+      <h1 class="ms-font-su">Snooze Email</h1>
+    </header>
+
+    <section id="sideload-msg" class="ms-welcome__main" style="display: none;">
+      <h2 class="ms-font-xl">Please sideload your add-in to see app body.</h2>
+    </section>
+
+    <main id="app-body" class="ms-padding" style="display: block;">
+      <div id="snooze-options">
+        <div class="ms-ChoiceFieldGroup" id="snooze-durations">
+          <div class="ms-ChoiceField">
+            <input id="later-today" type="radio" name="snooze-duration" value="later-today" class="ms-ChoiceField-input">
+            <label for="later-today" class="ms-ChoiceField-field ms-font-m">Later Today (4:00 PM)</label>
+          </div>
+          <div class="ms-ChoiceField">
+            <input id="tomorrow" type="radio" name="snooze-duration" value="tomorrow" class="ms-ChoiceField-input" checked>
+            <label for="tomorrow" class="ms-ChoiceField-field ms-font-m">Tomorrow (8:00 AM)</label>
+          </div>
+          <div class="ms-ChoiceField">
+            <input id="this-weekend" type="radio" name="snooze-duration" value="this-weekend" class="ms-ChoiceField-input">
+            <label for="this-weekend" class="ms-ChoiceField-field ms-font-m">This Weekend</label>
+          </div>
+          <div class="ms-ChoiceField">
+            <input id="next-week" type="radio" name="snooze-duration" value="next-week" class="ms-ChoiceField-input">
+            <label for="next-week" class="ms-ChoiceField-field ms-font-m">Next Week</label>
+          </div>
+          <div class="ms-ChoiceField">
+            <input id="custom" type="radio" name="snooze-duration" value="custom" class="ms-ChoiceField-input">
+            <label for="custom" class="ms-ChoiceField-field ms-font-m">Custom Date/Time</label>
+            <div id="custom-date-time" style="display: none; margin-top: 10px;">
+              <input type="datetime-local" id="custom-snooze-time" class="ms-TextField-field">
+            </div>
+          </div>
+        </div>
+
+        <div class="ms-ChoiceField" style="margin-top: 20px;">
+          <input id="flag-email" type="checkbox" class="ms-ChoiceField-input">
+          <label for="flag-email" class="ms-ChoiceField-field ms-font-m">Flag email after snooze</label>
+        </div>
+
+        <div class="ms-ChoiceFieldGroup" id="snooze-actions" style="margin-top: 20px;">
+          <div class="ms-ChoiceField">
+            <input id="move-back" type="radio" name="snooze-action" value="move-back" class="ms-ChoiceField-input" checked>
+            <label for="move-back" class="ms-ChoiceField-field ms-font-m">Move back to inbox</label>
+          </div>
+          <div class="ms-ChoiceField">
+            <input id="keep-folder" type="radio" name="snooze-action" value="keep-folder" class="ms-ChoiceField-input">
+            <label for="keep-folder" class="ms-ChoiceField-field ms-font-m">Keep in 'Snoozed' folder</label>
+          </div>
+        </div>
+
+        <div class="ms-Dialog-actions" style="margin-top: 20px;">
+          <button id="snooze-button" class="ms-Button ms-Button--primary">
+            <span class="ms-Button-label">Snooze</span>
+          </button>
+          <button id="cancel-button" class="ms-Button">
+            <span class="ms-Button-label">Cancel</span>
+          </button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Flatpickr for datetime picker -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+</body>
+
+</html>

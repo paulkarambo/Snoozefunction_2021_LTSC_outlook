@@ -1,0 +1,10 @@
+node_modules/
+dist/
+lib/
+lib-amd/
+*.tsbuildinfo
+.env
+.env.local
+
+*.vsix
+*.log
